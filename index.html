@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <script src="https://cdn.firebase.com/js/client/2.2.3/firebase.js"></script>
+    <script>
+      function ledoff() {
+        var db = new Firebase("https://useyourworld.firebaseio.com/");
+        
+        var userRef = db.child("users");
+        
+        userRef.update({
+          "led" : "off"
+        });
+      }
+      function ledon() {
+        var db = new Firebase("https://useyourworld.firebaseio.com/");
+        
+        var userRef = db.child("users");
+        
+        userRef.update({
+          "led" : "on"
+        });
+      }
+      function servono() {
+        var db = new Firebase("https://useyourworld.firebaseio.com/");
+        
+        var userRef = db.child("users");
+        var servoRef = userRef.child("servo");
+        
+        
+        servoRef.update({
+          "open" : "no"
+        });
+      }
+      function servoyes() {
+        var db = new Firebase("https://useyourworld.firebaseio.com/");
+        
+        var userRef = db.child("users");
+        var servoRef = userRef.child("servo");
+        
+        
+        servoRef.update({
+          "open" : "yes"
+        });
+      }
+      
+    </script>
+    <button onclick="ledoff()">LED Off</button>
+    <button onclick="ledon()">LED On</button>
+    <button onclick="servono()">Servo No</button>
+    <button onclick="servoyes()">Servo Yes</button>
+    
+    
+  </head>
+  <body>
+    <p id="p1">Hello World!</p>
+    
+    <script>
+      function dbquery() {
+        var db = new Firebase("https://useyourworld.firebaseio.com/");
+        var userRef = db.child("users");
+        userRef.on("child_changed", function(snapshot) {
+          var change = snapshot.val();
+          
+          
+        });
+        
+      }
+      document.write(change.led);
+    </script>
+  </body>
+</html>
