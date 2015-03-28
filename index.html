@@ -2,53 +2,98 @@
   <head>
     <script src="https://cdn.firebase.com/js/client/2.2.3/firebase.js"></script>
     <script>
-      function ledoff() {
+      function OpenDoor() {
         var db = new Firebase("https://useyourworld.firebaseio.com/");
         
         var userRef = db.child("users");
+        var userRef = userRef.child("Bedroom");
         
         userRef.update({
-          "led" : "off"
+          "Door" : "open"
         });
       }
-      function ledon() {
+      function CloseDoor() {
         var db = new Firebase("https://useyourworld.firebaseio.com/");
         
         var userRef = db.child("users");
+        var userRef = userRef.child("Bedroom");
         
         userRef.update({
-          "led" : "on"
+          "Door" : "closed"
         });
       }
-      function servono() {
+      
+      function Lock() {
         var db = new Firebase("https://useyourworld.firebaseio.com/");
         
         var userRef = db.child("users");
-        var servoRef = userRef.child("servo");
+        var userRef = userRef.child("Bedroom");
         
-        
-        servoRef.update({
-          "open" : "no"
+        userRef.update({
+          "Locked" : "true"
         });
       }
-      function servoyes() {
+      function Unlock() {
         var db = new Firebase("https://useyourworld.firebaseio.com/");
         
         var userRef = db.child("users");
-        var servoRef = userRef.child("servo");
+        var userRef = userRef.child("Bedroom");
         
+        userRef.update({
+          "Locked" : "false"
+        });
+      }
+      
+      function TurnLightsOn() {
+        var db = new Firebase("https://useyourworld.firebaseio.com/");
+        
+        var userRef = db.child("users");
+        var userRef = userRef.child("Bedroom");
         
         servoRef.update({
-          "open" : "yes"
+          "OverheadLights" : "on"
+        });
+      }
+      function TurnLightsOff() {
+        var db = new Firebase("https://useyourworld.firebaseio.com/");
+        
+        var userRef = db.child("users");
+        var servoRef = userRef.child("Bedroom");
+        
+        servoRef.update({
+          "OverheadLights" : "off"
+        });
+      }
+      function OpenWindow() {
+        var db = new Firebase("https://useyourworld.firebaseio.com/");
+        
+        var userRef = db.child("users");
+        var userRef = userRef.child("Bedroom");
+        
+        userRef.update({
+          "Window" : "open"
+        });
+      }
+      function CloseWindow() {
+        var db = new Firebase("https://useyourworld.firebaseio.com/");
+        
+        var userRef = db.child("users");
+        var userRef = userRef.child("Bedroom");
+        
+        userRef.update({
+          "Window" : "closed"
         });
       }
       
     </script>
-    <button onclick="ledoff()">LED Off</button>
-    <button onclick="ledon()">LED On</button>
-    <button onclick="servono()">Servo No</button>
-    <button onclick="servoyes()">Servo Yes</button>
-    
+    <button onclick="OpenDoor()">Open Door</button>
+    <button onclick="CloseDoor()">Close Door</button>
+    <button onclick="Lock()">Lock Door</button>
+    <button onclick="Unlock()">Unlock Door</button>
+    <button onclick="TurnLightsOn()">Turn On Lights</button>
+    <button onclick="TurnLightsOff()">Turn Off Lights</button>
+    <button onclick="OpenWindow()">Open Window</button>
+    <button onclick="CloseWindow()">Close Window</button>
     
   </head>
   <body>
