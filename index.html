@@ -11,6 +11,7 @@
         userRef.update({
           "Door" : "open"
         });
+        Update();
       }
       function CloseDoor() {
         var db = new Firebase("https://useyourworld.firebaseio.com/");
@@ -21,6 +22,7 @@
         userRef.update({
           "Door" : "closed"
         });
+        Update();
       }
       
       function Lock() {
