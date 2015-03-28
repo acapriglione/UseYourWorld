@@ -87,6 +87,25 @@
         });
       }
       
+    </script>
+    
+    
+  </head>
+  <body>
+    <button onclick="OpenDoor()">Open Door</button>
+    <button onclick="CloseDoor()">Close Door</button><br />
+    <button onclick="Lock()">Lock Door</button>
+    <button onclick="Unlock()">Unlock Door</button><br />
+    <button onclick="TurnLightsOn()">Turn On Lights</button>
+    <button onclick="TurnLightsOff()">Turn Off Lights</button><br />
+    <button onclick="OpenWindow()">Open Window</button>
+    <button onclick="CloseWindow()">Close Window</button><br />
+    <p>Door is <span id="Door">open</span></p>
+    <p>Door is also <span id="Locked">locked</span></p>
+    <p>Lights are<span id="OverheadLights">on</span></p>
+    <p>Window is <span id="Window">open</span></p>
+    
+    <script>
       function Update(){
         var db = new Firebase("https://useyourworld.firebaseio.com/");
         var userRef = db.child("users");
@@ -102,25 +121,6 @@
         //document.getElementByID("OverheadLights").innerHTML = ;
         //document.getElementByID("Window").innerHTML = ;
       }
-      
-    </script>
-    <button onclick="OpenDoor()">Open Door</button>
-    <button onclick="CloseDoor()">Close Door</button><br />
-    <button onclick="Lock()">Lock Door</button>
-    <button onclick="Unlock()">Unlock Door</button><br />
-    <button onclick="TurnLightsOn()">Turn On Lights</button>
-    <button onclick="TurnLightsOff()">Turn Off Lights</button><br />
-    <button onclick="OpenWindow()">Open Window</button>
-    <button onclick="CloseWindow()">Close Window</button><br />
-    
-  </head>
-  <body>
-    <p>Door is <span id="Door">open</span></p>
-    <p>Door is also <span id="Locked">locked</span></p>
-    <p>Lights are<span id="OverheadLights">on</span></p>
-    <p>Window is <span id="Window">open</span></p>
-    
-    <script>
       Update();
     </script>
   </body>
