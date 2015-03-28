@@ -94,6 +94,7 @@
         var userRef = userRef.child("Door");
         userRef.once('value', function(nameSnapshot) {
           var door = nameSnapshot.val();
+          alert(door);
           document.getElementByID("Door").innerHTML = door;
         });
         
