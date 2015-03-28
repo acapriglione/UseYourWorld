@@ -85,6 +85,21 @@
         });
       }
       
+      function Update(){
+        var db = new Firebase("https://useyourworld.firebaseio.com/");
+        var userRef = db.child("users");
+        var userRef = userRef.child("Bedroom");
+        var userRef = userRef.child("Door");
+        userRef.once('value', function(nameSnapshot) {
+          var door = nameSnapshot.val();
+        });
+        
+        document.getElementByID("Door").innerHTML = door;
+        //document.getElementByID("Locked").innerHTML = ;
+        //document.getElementByID("OverheadLights").innerHTML = ;
+        //document.getElementByID("Window").innerHTML = ;
+      }
+      
     </script>
     <button onclick="OpenDoor()">Open Door</button>
     <button onclick="CloseDoor()">Close Door</button>
@@ -97,20 +112,13 @@
     
   </head>
   <body>
-    <p id="p1">Hello World!</p>
+    <p>Door is <span id="Door">open</span></p>
+    <p>Door is also <span id="Locked">locked</span></p>
+    <p>Lights are<span id="OverheadLights">on</span></p>
+    <p>Window is <span id="Window">open</span></p>
     
     <script>
-      function dbquery() {
-        var db = new Firebase("https://useyourworld.firebaseio.com/");
-        var userRef = db.child("users");
-        userRef.on("child_changed", function(snapshot) {
-          var change = snapshot.val();
-          
-          
-        });
-        
-      }
-      document.write(change.led);
+      Update();
     </script>
   </body>
 </html>
