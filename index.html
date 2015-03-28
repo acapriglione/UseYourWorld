@@ -58,7 +58,7 @@
         var db = new Firebase("https://useyourworld.firebaseio.com/");
         
         var userRef = db.child("users");
-        var servoRef = userRef.child("Bedroom");
+        var userRef = userRef.child("Bedroom");
         
         userRef.update({
           "OverheadLights" : "off"
