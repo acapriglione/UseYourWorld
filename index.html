@@ -114,7 +114,7 @@
         userRef.once('value', function(nameSnapshot) {
           var door = nameSnapshot.val();
           alert(door);
-          document.getElementByID("Door").innerHTML = door;
+          document.getElementByID("Door").innerHTML = "<strong>"+door+"</strong>";
         });
         
         //document.getElementByID("Locked").innerHTML = ;
