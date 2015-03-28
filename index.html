@@ -1,6 +1,7 @@
 <html>
   <head>
     <script src="https://cdn.firebase.com/js/client/2.2.3/firebase.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>
       function OpenDoor() {
         var db = new Firebase("https://useyourworld.firebaseio.com/");
@@ -113,9 +114,10 @@
         var userRef = userRef.child("Door");
         userRef.once('value', function(nameSnapshot) {
           var door = nameSnapshot.val();
-          alert(door);
-          alert(document.getElementByID("Door").innerHTML);
-          document.getElementByID("Door").innerHTML = "test";
+          //alert(door);
+          //alert(document.getElementByID("Door").innerHTML);
+          //document.getElementByID("Door").innerHTML = "test";
+          $("#Door").text("test");
         });
         
         //document.getElementByID("Locked").innerHTML = ;
