@@ -1,0 +1,150 @@
+<html>
+  <head>
+    <script src="https://cdn.firebase.com/js/client/2.2.3/firebase.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+      function OpenDoor() {
+        var db = new Firebase("https://useyourworld.firebaseio.com/");
+        
+        var userRef = db.child("users");
+        var userRef = userRef.child("Bedroom");
+        
+        userRef.update({
+          "Door" : "open"
+        });
+        Update();
+      }
+      function CloseDoor() {
+        var db = new Firebase("https://useyourworld.firebaseio.com/");
+        
+        var userRef = db.child("users");
+        var userRef = userRef.child("Bedroom");
+        
+        userRef.update({
+          "Door" : "closed"
+        });
+        Update();
+      }
+      
+      function Lock() {
+        var db = new Firebase("https://useyourworld.firebaseio.com/");
+        
+        var userRef = db.child("users");
+        var userRef = userRef.child("Bedroom");
+        
+        userRef.update({
+          "Locked" : "true"
+        });
+        Update();
+      }
+      function Unlock() {
+        var db = new Firebase("https://useyourworld.firebaseio.com/");
+        
+        var userRef = db.child("users");
+        var userRef = userRef.child("Bedroom");
+        
+        userRef.update({
+          "Locked" : "false"
+        });
+        Update();
+      }
+      
+      function TurnLightsOn() {
+        var db = new Firebase("https://useyourworld.firebaseio.com/");
+        
+        var userRef = db.child("users");
+        var userRef = userRef.child("Bedroom");
+        
+        userRef.update({
+          "OverheadLights" : "on"
+        });
+        Update();
+      }
+      function TurnLightsOff() {
+        var db = new Firebase("https://useyourworld.firebaseio.com/");
+        
+        var userRef = db.child("users");
+        var userRef = userRef.child("Bedroom");
+        
+        userRef.update({
+          "OverheadLights" : "off"
+        });
+        Update();
+      }
+      function OpenWindow() {
+        var db = new Firebase("https://useyourworld.firebaseio.com/");
+        
+        var userRef = db.child("users");
+        var userRef = userRef.child("Bedroom");
+        
+        userRef.update({
+          "Window" : "open"
+        });
+        Update();
+      }
+      function CloseWindow() {
+        var db = new Firebase("https://useyourworld.firebaseio.com/");
+        
+        var userRef = db.child("users");
+        var userRef = userRef.child("Bedroom");
+        
+        userRef.update({
+          "Window" : "closed"
+        });
+        Update();
+      }
+      
+    </script>
+    
+    
+  </head>
+  <body>
+    <button onclick="OpenDoor()">Open Door</button>
+    <button onclick="CloseDoor()">Close Door</button><br />
+    <button onclick="Lock()">Lock Door</button>
+    <button onclick="Unlock()">Unlock Door</button><br />
+    <button onclick="TurnLightsOn()">Turn On Lights</button>
+    <button onclick="TurnLightsOff()">Turn Off Lights</button><br />
+    <button onclick="OpenWindow()">Open Window</button>
+    <button onclick="CloseWindow()">Close Window</button><br />
+    <p>Door is <span id="Door">open</span></p>
+    <p>Door is locked?(T/F) <span id="Locked">locked</span></p>
+    <p>Lights are <span id="OverheadLights">on</span></p>
+    <p>Window is <span id="Window">open</span></p>
+    
+    <script>
+      function Update(){
+        var db = new Firebase("https://useyourworld.firebaseio.com/");
+        var userRef = db.child("users");
+        var userRef = userRef.child("Bedroom");
+        var doorRef = userRef.child("Door");
+        doorRef.once('value', function(nameSnapshot) {
+          var door = nameSnapshot.val();
+          $("#Door").text(door);
+        });
+        var lockRef = userRef.child("Locked");
+        lockRef.once('value', function(nameSnapshot) {
+          var lock = nameSnapshot.val();
+          $("#Locked").text(lock);
+        });
+        var lightsRef = userRef.child("OverheadLights");
+        lightsRef.once('value', function(nameSnapshot) {
+          var light = nameSnapshot.val();
+          $("#OverheadLights").text(light);
+        });
+        var windowRef = userRef.child("Window");
+        windowRef.once('value', function(nameSnapshot) {
+          var windows = nameSnapshot.val();
+          $("#Window").text(windows);
+        });
+      }
+      
+      function updateFromDB(){
+        Update();
+        result = setTimeout(updateFromDB, 500);
+      }
+      
+      updateFromDB();
+    </script>
+  </body>
+</html>
