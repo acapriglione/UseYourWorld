@@ -35,6 +35,7 @@
         userRef.update({
           "Locked" : "true"
         });
+        Update();
       }
       function Unlock() {
         var db = new Firebase("https://useyourworld.firebaseio.com/");
@@ -45,6 +46,7 @@
         userRef.update({
           "Locked" : "false"
         });
+        Update();
       }
       
       function TurnLightsOn() {
@@ -56,6 +58,7 @@
         userRef.update({
           "OverheadLights" : "on"
         });
+        Update();
       }
       function TurnLightsOff() {
         var db = new Firebase("https://useyourworld.firebaseio.com/");
@@ -66,6 +69,7 @@
         userRef.update({
           "OverheadLights" : "off"
         });
+        Update();
       }
       function OpenWindow() {
         var db = new Firebase("https://useyourworld.firebaseio.com/");
@@ -76,6 +80,7 @@
         userRef.update({
           "Window" : "open"
         });
+        Update();
       }
       function CloseWindow() {
         var db = new Firebase("https://useyourworld.firebaseio.com/");
@@ -86,6 +91,7 @@
         userRef.update({
           "Window" : "closed"
         });
+        Update();
       }
       
     </script>
@@ -103,7 +109,7 @@
     <button onclick="CloseWindow()">Close Window</button><br />
     <p>Door is <span id="Door">open</span></p>
     <p>Door is also <span id="Locked">locked</span></p>
-    <p>Lights are<span id="OverheadLights">on</span></p>
+    <p>Lights are <span id="OverheadLights">on</span></p>
     <p>Window is <span id="Window">open</span></p>
     
     <script>
