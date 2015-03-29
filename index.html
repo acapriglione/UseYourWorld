@@ -111,15 +111,26 @@
         var db = new Firebase("https://useyourworld.firebaseio.com/");
         var userRef = db.child("users");
         var userRef = userRef.child("Bedroom");
-        var userRef = userRef.child("Door");
-        userRef.once('value', function(nameSnapshot) {
+        var doorRef = userRef.child("Door");
+        doorRef.once('value', function(nameSnapshot) {
           var door = nameSnapshot.val();
           $("#Door").text(door);
         });
-        
-        //document.getElementByID("Locked").innerHTML = ;
-        //document.getElementByID("OverheadLights").innerHTML = ;
-        //document.getElementByID("Window").innerHTML = ;
+        var lockRef = userRef.child("Locked");
+        lockRef.once('value', function(nameSnapshot) {
+          var lock = nameSnapshot.val();
+          $("#Locked").text(lock);
+        });
+        var lightsRef = userRef.child("OverheadLights");
+        lightsRef.once('value', function(nameSnapshot) {
+          var light = nameSnapshot.val();
+          $("#OverheadLights").text(light);
+        });
+        var windowRef = userRef.child("Window");
+        windowRef.once('value', function(nameSnapshot) {
+          var windows = nameSnapshot.val();
+          $("#Window").text(windows);
+        });
       }
       Update();
     </script>
