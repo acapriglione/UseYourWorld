@@ -138,7 +138,13 @@
           $("#Window").text(windows);
         });
       }
-      Update();
+      
+      function updateFromDB(){
+        Update();
+        result = setTimeout(updateFromDB, 2000);
+      }
+      
+      updateFromDB();
     </script>
   </body>
 </html>
